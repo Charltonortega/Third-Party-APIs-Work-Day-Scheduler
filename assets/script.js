@@ -1,3 +1,16 @@
+// implement current day and current time using dayjs, then call updateDateTime every second.
+function updateDateTime() {
+  var now = dayjs();
+  var datetime = now.format('YYYY-MM-DD HH:mm:ss');
+  document.getElementById("currentDay").textContent = datetime;
+}
+
+// Call updateDateTime once at the beginning to set the initial date and time
+updateDateTime();
+
+// Then call updateDateTime every second (1000 milliseconds)
+setInterval(updateDateTime, 1000);
+
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
