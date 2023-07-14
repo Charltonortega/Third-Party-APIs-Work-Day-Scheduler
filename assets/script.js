@@ -1,36 +1,18 @@
-// implement current day and current time using dayjs, then call updateDateTime every second.
-function updateDateTime() {
-  var now = dayjs();
-  var datetime = now.format('YYYY-MM-DD HH:mm:ss');
-  document.getElementById("currentDay").textContent = datetime;
-}
+var currentTime = dayjs().format('HH:mm:ss');
+console.log('Current time:', currentTime);
 
-// Call updateDateTime once at the beginning to set the initial date and time
-updateDateTime();
+$(document).ready(function() {
+  // This function updates the text of the element with ID "currentDay" to the current date and time.
+  function updateDateTime() {
+    var now = dayjs().format('YYYY-MM-DD HH:mm:ss');
+    $("#currentDay").text(now);
+  }
 
-// Then call updateDateTime every second (1000 milliseconds)
-setInterval(updateDateTime, 1000);
+  // Call updateDateTime immediately to set the initial date and time
+  updateDateTime();
 
-// Wrap all code that interacts with the DOM in a call to jQuery to ensure that
-// the code isn't run until the browser has finished rendering all the elements
-// in the html.
-$(function () {
-  // TODO: Add a listener for click events on the save button. This code should
-  // use the id in the containing time-block as a key to save the user input in
-  // local storage. HINT: What does `this` reference in the click listener
-  // function? How can DOM traversal be used to get the "hour-x" id of the
-  // time-block containing the button that was clicked? How might the id be
-  // useful when saving the description in local storage?
-  //
-  // TODO: Add code to apply the past, present, or future class to each time
-  // block by comparing the id to the current hour. HINTS: How can the id
-  // attribute of each time-block be used to conditionally add or remove the
-  // past, present, and future classes? How can Day.js be used to get the
-  // current hour in 24-hour time?
-  //
-  // TODO: Add code to get any user input that was saved in localStorage and set
-  // the values of the corresponding textarea elements. HINT: How can the id
-  // attribute of each time-block be used to do this?
-  //
-  // TODO: Add code to display the current date in the header of the page.
+  // Then call updateDateTime every second (1000 milliseconds)
+  setInterval(updateDateTime, 1000);
+
+
 });
