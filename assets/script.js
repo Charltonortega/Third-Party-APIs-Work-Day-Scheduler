@@ -6,13 +6,16 @@ $(document).ready(function() {
   function updateDateTime() {
     var now = dayjs().format('YYYY-MM-DD HH:mm:ss');
     $("#currentDay").text(now);
+    
   }
 
   // Call updateDateTime immediately to set the initial date and time
   updateDateTime();
+  console.log("Initial date and time set.")
 
   // Then call updateDateTime every second (1000 milliseconds)
   setInterval(updateDateTime, 1000);
+  console.log("Date and time updated")
 
     // Loop from 9a to 17(5p,) (for hours from 9AM to 5PM)
     for (var hour = 9; hour <= 17; hour++) {
@@ -33,5 +36,35 @@ $(document).ready(function() {
       $("#calendarContainer").append(timeBlock);
     }
   
+// Get the current hour
+var currentHour = dayjs().hour();
+// currentHour = 14 - Used to test code when working out of current time
+
+// Perform over each time block
+  $(".time-block").each(function() {
+    // Get the hour from the time block's ID
+    var blockHour = parseInt($(this).attr('id').split('-')[1]);
+
+      // Apply appropriate class based on the current hour to indicate past, present, or future
+      if (blockHour < currentHour) {
+        $(this).removeClass('present future').addClass('past');
+      }
+      else if (blockHour === currentHour) {
+        $(this).removeClass('past future').addClass('present');
+      }
+      else {
+        $(this).removeClass('past present').addClass('future');
+      }
+
+// Get the saved event description from local storage - saved on local storage 
+    var description = localStorage.getItem('hour-' + blockHour);
+
+// If a description exists, set it as the value of the textarea
+    if (description) {
+      $(this).find('textarea').val(description);
+    }
+  });
+
 });
+
 
