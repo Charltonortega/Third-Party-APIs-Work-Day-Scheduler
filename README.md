@@ -48,6 +48,6 @@ The following animation demonstrates the application functionality:
 
 ## Deployment
 
-The URL of the deployed application:
+The URL of the deployed application: https://charltonortega.github.io/Third-Party-APIs-Work-Day-Scheduler/
 
 The URL of the GitHub repository: https://github.com/Charltonortega/Third-Party-APIs-Work-Day-Scheduler
